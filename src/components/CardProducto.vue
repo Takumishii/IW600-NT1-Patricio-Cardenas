@@ -48,8 +48,6 @@ export default {
   </div>
 </template>
 
-
-
 <style scoped>
 .card {
   border: 1px solid #e0e0e0;
@@ -60,6 +58,9 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  width: 100%; /* Permite que la tarjeta ocupe el espacio exacto asignado por la grilla */
+  box-sizing: border-box; /* Previene que el padding deforme el ancho real */
 }
 
 .card.deshabilitado {

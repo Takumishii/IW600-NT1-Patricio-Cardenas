@@ -1,6 +1,7 @@
 <template>
   <footer class="footer">
     <p>&copy; 2026 Mercado Ñuble Digital - Región de Ñuble</p>
+    <p>Made by Patricio Cárdenas</p>
   </footer>
 </template>
 

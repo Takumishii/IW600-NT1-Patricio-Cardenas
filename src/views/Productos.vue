@@ -43,7 +43,7 @@ export default {
     <div v-if="seleccionado" class="alerta-interes">
       <p>
         ¡Gracias por tu interés en <strong>{{ seleccionado.nombre }}</strong>! 
-        Puedes contactar directamente al productor <strong>{{ seleccionado.productor }}</strong> ({{ seleccionado.comuna }}).
+        El productor te contactará en cuanto dejes tus datos en la pestaña "Contacto" <strong>{{ seleccionado.productor }}</strong> ({{ seleccionado.comuna }}).
       </p>
       <button @click="seleccionado = null" class="btn-cerrar">&times;</button>
     </div>
@@ -71,6 +71,12 @@ export default {
 </template>
 
 <style scoped>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
 .alerta-interes {
   background-color: #e8f5e9;
   border: 1px solid #a5d6a7;
@@ -114,10 +120,23 @@ export default {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important; /* Fuerza 3 columnas */
+  gap: 1.5rem !important;
   margin-top: 1.5rem;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 columnas en tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr !important; /* 1 columna en celulares */
+  }
 }
 
 .mensaje-vacio {
