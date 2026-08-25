@@ -16,3 +16,13 @@ La navegación se implementó con `Vue Router`, configurando el historial (`crea
 
 Tambien se implementó un Footer, el contenido de la web es texto de relleno, por cambiar
 
+## Parte B – Componentes y Props
+
+Se creó el componente reutilizable `CardProducto.vue` en la carpeta `src/components/`. Este componente recibe un objeto `producto` a través de `props`, el cual contiene las propiedades: `nombre`, `categoria`, `productor`, `comuna` y `precio`. 
+
+La información es enviada desde el componente padre `Productos.vue`, donde se encuentra almacenada la estructura de datos con 6 productos, iterando mediante `v-for` para pasar cada elemento individual hacia la prop del componente hijo.
+
+## Parte C – Listas y condicionales
+Se utiliza la lista `productos` almacenada en el estado de `Productos.vue`, la cual se recorre dinámicamente mediante la directiva `v-for`. 
+
+Se implementó una funcionalidad condicional basada en la disponibilidad de los productos (`disponible: true/false`). Mediante una propiedad computada (`filtrados`) y un checkbox vinculado con `v-model`, la lista se puede filtrar para ver solo los disponibles. Se utilizan las `v-if` y `v-else` para mostrar las tarjetas o un mensaje cuando no existan coincidencias.

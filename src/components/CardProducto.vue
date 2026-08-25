@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" :class="{ 'deshabilitado': !producto.disponible }">
     <div class="card-header">
       <h3>{{ producto.nombre }}</h3>
       <span class="badge">{{ producto.categoria }}</span>
@@ -21,9 +21,18 @@ export default {
       <p><strong>Productor:</strong> {{ producto.productor }}</p>
       <p><strong>Comuna:</strong> {{ producto.comuna }}</p>
       <p class="precio">${{ producto.precio.toLocaleString('es-CL') }}</p>
+      
+      <p class="estado">
+        Estado: 
+        <span :class="producto.disponible ? 'disponible' : 'agotado'">
+          {{ producto.disponible ? 'Disponible' : 'Agotado' }}
+        </span>
+      </p>
     </div>
   </div>
 </template>
+
+
 
 <style scoped>
 .card {
@@ -35,6 +44,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.card.deshabilitado {
+  opacity: 0.6;
 }
 
 .card-header {
@@ -59,15 +72,20 @@ export default {
   font-weight: bold;
 }
 
-.card-body p {
-  margin: 0.4rem 0;
-  color: #555;
-}
-
 .precio {
   font-size: 1.25rem;
   font-weight: bold;
-  color: #2e7d32 !important;
-  margin-top: 0.8rem !important;
+  color: #2e7d32;
+  margin-top: 0.8rem;
+}
+
+.disponible {
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+.agotado {
+  color: #c62828;
+  font-weight: bold;
 }
 </style>
