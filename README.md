@@ -108,3 +108,4 @@ Para resolver este problema, se aplicaron los siguientes pasos técnicos:
 # 4. Finalmente, se utilizó la renderización condicional ('v-if="seleccionado"') en el padre para desplegar dinámicamente un banner de confirmación visible en pantalla solo cuando existan datos recibidos desde el hijo.
 
 Además de esto que fue lo que más tiempo demore, fue el compaginar el tiempo con las otras evaluaciones que habían a la vez de la realización de esta :(
+
