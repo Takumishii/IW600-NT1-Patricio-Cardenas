@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       disponibles: false,
+      seleccionado: null,
       productos: [
         { id: 1, nombre: 'Miel de Eucalipto (pa el resfrio)', categoria: 'Conservas', productor: 'Unach', comuna: 'Chillan', precio: 700000, disponible: true },
         { id: 2, nombre: 'Queso Mantecoso', categoria: 'Lácteos', productor: 'Via Lactea', comuna: 'Coihueco', precio: 8500, disponible: true },
@@ -25,6 +26,11 @@ export default {
       }
       return this.productos
     }
+  },
+  methods: {
+    registrarInteres(producto) {
+      this.seleccionado = producto
+    }
   }
 }
 </script>
@@ -33,6 +39,14 @@ export default {
   <div class="container">
     <h2>Catálogo de Productos - Región de Ñuble</h2>
     <p>Descubre lo que produjo nuestra región.</p>
+
+    <div v-if="seleccionado" class="alerta-interes">
+      <p>
+        ¡Gracias por tu interés en <strong>{{ seleccionado.nombre }}</strong>! 
+        Puedes contactar directamente al productor <strong>{{ seleccionado.productor }}</strong> ({{ seleccionado.comuna }}).
+      </p>
+      <button @click="seleccionado = null" class="btn-cerrar">&times;</button>
+    </div>
 
     <div class="controles">
       <label class="checkbox-label">
@@ -46,6 +60,7 @@ export default {
         v-for="item in filtrados" 
         :key="item.id" 
         :producto="item" 
+        @interes="registrarInteres"
       />
     </div>
 
@@ -56,6 +71,31 @@ export default {
 </template>
 
 <style scoped>
+.alerta-interes {
+  background-color: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  color: #1b5e20;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alerta-interes p {
+  margin: 0;
+}
+
+.btn-cerrar {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #1b5e20;
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .controles {
   margin-bottom: 1.5rem;
   background: #ffffff;

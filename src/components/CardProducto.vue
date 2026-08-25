@@ -1,10 +1,16 @@
 <script>
 export default {
-  name: 'ProductoCard',
+  name: 'CardProducto',
   props: {
     producto: {
       type: Object,
       required: true
+    }
+  },
+  emits: ['interes'],
+  methods: {
+    interes() {
+      this.$emit('interes', this.producto)
     }
   }
 }
@@ -29,6 +35,16 @@ export default {
         </span>
       </p>
     </div>
+
+    <div class="card-footer">
+      <button 
+        class="btn-interes" 
+        :disabled="!producto.disponible"
+        @click="interes"
+      >
+        {{ producto.disponible ? 'Me interesa' : 'Sin Stock' }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -47,7 +63,7 @@ export default {
 }
 
 .card.deshabilitado {
-  opacity: 0.6;
+  opacity: 0.65;
 }
 
 .card-header {
@@ -87,5 +103,30 @@ export default {
 .agotado {
   color: #c62828;
   font-weight: bold;
+}
+
+.card-footer {
+  margin-top: 1rem;
+}
+
+.btn-interes {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-interes:hover:not(:disabled) {
+  background-color: #1b5e20;
+}
+
+.btn-interes:disabled {
+  background-color: #9e9e9e;
+  cursor: not-allowed;
 }
 </style>

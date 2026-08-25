@@ -26,3 +26,9 @@ La información es enviada desde el componente padre `Productos.vue`, donde se e
 Se utiliza la lista `productos` almacenada en el estado de `Productos.vue`, la cual se recorre dinámicamente mediante la directiva `v-for`. 
 
 Se implementó una funcionalidad condicional basada en la disponibilidad de los productos (`disponible: true/false`). Mediante una propiedad computada (`filtrados`) y un checkbox vinculado con `v-model`, la lista se puede filtrar para ver solo los disponibles. Se utilizan las `v-if` y `v-else` para mostrar las tarjetas o un mensaje cuando no existan coincidencias.
+
+## Parte D – Comunicación mediante Emit
+* **Acción que realiza el usuario:** El usuario presiona el botón "Me interesa" ubicado en la tarjeta de un producto disponible.
+* **Componente que genera el evento:** El componente hijo `CardProducto.vue`.
+* **Componente que lo recibe:** El componente padre `Productos.vue`.
+* **Qué ocurre después de recibirlo:** El componente padre activa `seleccionado` con la información enviada por el hijo y despliega una alerta (`alerta-interes`) informando al usuario, el interés por el producto y que puedes contactar al productor.
