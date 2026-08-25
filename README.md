@@ -32,3 +32,10 @@ Se implementó una funcionalidad condicional basada en la disponibilidad de los 
 * **Componente que genera el evento:** El componente hijo `CardProducto.vue`.
 * **Componente que lo recibe:** El componente padre `Productos.vue`.
 * **Qué ocurre después de recibirlo:** El componente padre activa `seleccionado` con la información enviada por el hijo y despliega una alerta (`alerta-interes`) informando al usuario, el interés por el producto y que puedes contactar al productor.
+
+## Parte E – Formulario y validación
+* **Campos implementados:** Nombre completo, Correo electrónico, Teléfono, Comuna y Mensaje, todos vinculados bidireccionalmente al estado mediante `v-model`.
+* **Validaciones realizadas:** Al intentar enviar el formulario mediante el evento `@submit.prevent`, se verifica que ninguno de los campos esté vacío.
+* **Respuesta de la aplicación:**
+  * **Incorrecta/Faltante:** Muestra un cuadro de advertencia en rojo
+  * **Correcta:** Oculta el formulario y muestra un mensaje de éxito junto con todos los datos ingresados en el formulario.
